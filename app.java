@@ -163,20 +163,8 @@ public class app {
 		 Team_agreement final_output[] = new Team_agreement[project_length];
 		 matcher(final_output,choice_value,student_length,project_length,student_list,project_list);
 		 System.out.println("Success");
-		 for(int b=1;b<=final_output.length;b++){
-			 String fileName = "test1.txt";
-		   try{
-		     PrintWriter outputStream = new PrintWriter(fileName);
-				 for(int a=0;a<final_output.length;a++){
-					 String result = final_output[a].output_roster();
-		 			outputStream.println(result);
-		 		}
-				 outputStream.close();
-		     //System.out.println("Done!");
-		   }
-		   catch(FileNotFoundException e){
-		     e.printStackTrace();
-		   }
+		 for(int b=0;b<final_output.length;b++){
+			 final_output[b].output_roster(b);
 		 }
 	}
 }
