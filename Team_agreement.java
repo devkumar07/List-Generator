@@ -1,3 +1,12 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.StringTokenizer;
+import java.util.Scanner;
+import java.io.PrintWriter;
 public class Team_agreement{
   private String title="";
   private String[] student;
@@ -18,26 +27,15 @@ public class Team_agreement{
       i++;
     }
   }
-  public String output_roster(){
-    String final_output="";
-    int next=0;
-    final_output="Title: "+ title + " ; Students: ";
-    int i=0;
-    if(student[i]==null){
-      final_output += "There are no data to display";
+  public void output_roster(int index){
+    String fileName = "test"+index+".txt";
+    try{
+      PrintWriter outputStream = new PrintWriter(fileName);
+       outputStream.println("successful");
+       outputStream.close();
     }
-    else{
-      while(student[i]!=null){
-        next=i+1;
-        if(student[next]==null){
-          final_output+=student[i];
-        }
-        else{
-          final_output+=student[i]+",";
-        }
-        i++;
-      }
+    catch(FileNotFoundException e){
+      e.printStackTrace();
     }
-    return final_output;
   }
 }
