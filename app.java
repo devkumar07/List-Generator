@@ -54,9 +54,9 @@ public class app {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Welcome to List generator!");
 		System.out.println("Please input your Student Roster");
-		data_CSV=input.nextLine();
+		data_CSV="data/"+input.nextLine();
 		System.out.println("Please input your Project Roster");
-		project_CSV=input.nextLine();
+		project_CSV="data/"+input.nextLine();
 
 		//fetching data from CSV files
 		try {
@@ -163,21 +163,20 @@ public class app {
 		 Team_agreement final_output[] = new Team_agreement[project_length];
 		 matcher(final_output,choice_value,student_length,project_length,student_list,project_list);
 		 System.out.println("Success");
-		 /*for(int a=0;a<final_output.length;a++){
-			 System.out.println(final_output[a].output_roster());
-		 }*/
-		 String fileName = "test.txt";
-	   try{
-	     PrintWriter outputStream = new PrintWriter(fileName);
-			 for(int a=0;a<final_output.length;a++){
-				 String result = final_output[a].output_roster();
-	 			outputStream.println(result);
-	 		}
-			 outputStream.close();
-	     System.out.println("Done!");
-	   }
-	   catch(FileNotFoundException e){
-	     e.printStackTrace();
-	   }
+		 for(int b=1;b<=final_output.length;b++){
+			 String fileName = "test1.txt";
+		   try{
+		     PrintWriter outputStream = new PrintWriter(fileName);
+				 for(int a=0;a<final_output.length;a++){
+					 String result = final_output[a].output_roster();
+		 			outputStream.println(result);
+		 		}
+				 outputStream.close();
+		     System.out.println("Done!");
+		   }
+		   catch(FileNotFoundException e){
+		     e.printStackTrace();
+		   }
+		 }
 	}
 }
