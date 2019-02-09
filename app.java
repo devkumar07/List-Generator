@@ -14,7 +14,7 @@ public class app {
 			if(project[i].get_number().isEmpty()){
 				break;
 			}
-			String roster[] = new String[slength];
+			Student_data roster[] = new Student_data[slength];
 			for(int k = 0; k<slength; k++){
 				if(student[k].get_Team().isEmpty()){
 					break;
@@ -22,14 +22,16 @@ public class app {
 				else{
 					if(student[k].get_agree().equals(value)){
 						if(student[k].get_Team().equals(project[i].get_number())){
-							roster[j]=student[k].get_email_id();
+							roster[j]=new Student_data(student[k].get_Team(),student[k].get_first_name(),student[k].get_last_name(),student[k].get_email_id(),student[k].get_agree(),student[k].get_Time());
 							j++;
 						}
 					}
 				}
 			}
 			j=0;
-			final_roster[i]=new Team_agreement(project[i].get_title(), roster);
+			final_roster[i]=new Team_agreement();
+			final_roster[i].set_student_roster(roster);
+			final_roster[i].set_project_roster(project);
 		}
 	}
 	public static void main(String[] args) {
@@ -45,6 +47,8 @@ public class app {
 		String Time="";
 		String title="";
 		String number="";
+		String project_id="";
+		String organization="";
 		int project_length=0;
 		int student_length=0;
 		int i=0;
@@ -114,13 +118,19 @@ public class app {
 					//display csv value
 					tokenNumber++;
 					if(tokenNumber==1){
-					 	title	=st.nextToken();
+					 	project_id=st.nextToken();
 					}
 					if(tokenNumber==2){
 						number=st.nextToken();
 					}
+					if(tokenNumber==3){
+						organization=st.nextToken();
+					}
+					if(tokenNumber==4){
+						title=st.nextToken();
+					}
 				}
-				project_list[i] = new Project_data(title,number);
+				project_list[i] = new Project_data(title,number,project_id,organization);
 				//reset token number
 				tokenNumber = 0;
 				i++;
@@ -162,6 +172,7 @@ public class app {
 		project_length=i;
 		 Team_agreement final_output[] = new Team_agreement[project_length];
 		 matcher(final_output,choice_value,student_length,project_length,student_list,project_list);
+		 //System.out.println("testing="+final_output[2].get_candidates(2));
 		 System.out.println("Success");
 		 for(int b=0;b<final_output.length;b++){
 			 final_output[b].output_roster(b);
