@@ -13,6 +13,14 @@ public class Student_data{
     agreement = agree;
     timestamp = time;
   }
+  public Student_data(Student_data list){
+    this.Team = list.Team;
+    this.first_name = list.first_name;
+    this.last_name = list.last_name;
+    this.email_id = list.email_id;
+    this.agreement = list.agreement;
+    this.timestamp = list.timestamp;
+  }
   public String get_first_name(){
     return first_name;
   }

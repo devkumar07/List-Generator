@@ -8,29 +8,26 @@ import java.util.StringTokenizer;
 import java.util.Scanner;
 import java.io.PrintWriter;
 public class app {
-	public static void matcher(Team_agreement final_roster[], String value, int slength, int plength, Student_data student[], Project_data project[]){
-		int j=0;
-		for(int i = 0; i<plength; i++){
-			if(project[i].get_number().isEmpty()){
-				break;
-			}
-			String roster[] = new String[slength];
-			for(int k = 0; k<slength; k++){
-				if(student[k].get_Team().isEmpty()){
-					break;
-				}
-				else{
-					if(student[k].get_agree().equals(value)){
-						if(student[k].get_Team().equals(project[i].get_number())){
-							roster[j]=student[k].get_email_id();
+	public static Team_agreement matcher(String value, Student_data student[], Project_data project){
+			if(project!=null){
+				int j=0;
+				int k=0;
+				Student_data updated_student[]=new Student_data[student.length];
+				while(student[k]!=null){
+					if(project.get_number().equals(student[k].get_Team())){
+						if(student[k].get_agree().equals(value)){
+							updated_student[j]=new Student_data(student[k]);
 							j++;
 						}
 					}
+					k++;
+				}
+				if(updated_student[0]!=null){
+					Team_agreement data=new Team_agreement(updated_student,project);
+					return data;
 				}
 			}
-			j=0;
-			final_roster[i]=new Team_agreement(project[i].get_title(), roster);
-		}
+			return null;
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -45,6 +42,8 @@ public class app {
 		String Time="";
 		String title="";
 		String number="";
+		String project_id="";
+		String organization="";
 		int project_length=0;
 		int student_length=0;
 		int i=0;
@@ -114,13 +113,19 @@ public class app {
 					//display csv value
 					tokenNumber++;
 					if(tokenNumber==1){
-					 	title	=st.nextToken();
+					 	project_id=st.nextToken();
 					}
 					if(tokenNumber==2){
 						number=st.nextToken();
 					}
+					if(tokenNumber==3){
+						organization=st.nextToken();
+					}
+					if(tokenNumber==4){
+						title=st.nextToken();
+					}
 				}
-				project_list[i] = new Project_data(title,number);
+				project_list[i] = new Project_data(title,number,project_id,organization);
 				//reset token number
 				tokenNumber = 0;
 				i++;
@@ -160,11 +165,28 @@ public class app {
 				break;
 		}
 		project_length=i;
+		System.out.println("project_id new:"+project_list[2].get_number());
 		 Team_agreement final_output[] = new Team_agreement[project_length];
-		 matcher(final_output,choice_value,student_length,project_length,student_list,project_list);
+		 int c=0;
+		 for(int a=0; a<final_output.length;a++){
+			 final_output[c]=matcher(choice_value,student_list,project_list[a]);
+			 if(final_output[c]!=null){
+				 c++;
+			 }
+		 }
 		 System.out.println("Success");
 		 for(int b=0;b<final_output.length;b++){
-			 final_output[b].output_roster(b);
+			 if(final_output[b]!=null){
+				 String fileName = "2019_01_Spring-CSE-StudentAgreements-Team"+final_output[b].Project.get_number()+"-"+final_output[b].Project.get_organization()+"-"+final_output[b].Project.get_project_id()+".txt";
+		     try{
+		       PrintWriter outputStream = new PrintWriter(fileName);
+		        outputStream.println("Team#"+b);
+		        outputStream.close();
+		     }
+		     catch(FileNotFoundException e){
+		       e.printStackTrace();
+		     }
+			 }
 		 }
 	}
 }
