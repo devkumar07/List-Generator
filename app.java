@@ -179,8 +179,37 @@ public class app {
 			 if(final_output[b]!=null){
 				 String fileName = "2019_01_Spring-CSE-StudentAgreements-Team"+final_output[b].Project.get_number()+"-"+final_output[b].Project.get_organization()+"-"+final_output[b].Project.get_project_id()+".txt";
 		     try{
-		       PrintWriter outputStream = new PrintWriter(fileName);
-		        outputStream.println("Team#"+b);
+					 i = 0;
+
+					 PrintWriter outputStream = new PrintWriter(fileName);
+
+						outputStream.println("Dear NAME,");
+						outputStream.println("These students digitally signed the IP+NDA agreement 'UC Merced Innovate to Grow Program - Student Registration and Agreement' with UC Merced ID credentials:\n");
+
+						outputStream.println(String.format("%30s %20s %20s %30s", "Timestamp", "First Name", "Last Name", "Email"));
+						//outputStream.println(String.format("%s", "_______________________________________________________________________________________________________"));
+
+						while(final_output[b].Student[i] != null){
+									outputStream.println(String.format("%30s %20s %20s %30s", final_output[b].Student[i].get_Time(),final_output[b].Student[i].get_first_name(), final_output[b].Student[i].get_last_name(), final_output[b].Student[i].get_email_id()));
+									i++;
+						}
+
+						outputStream.println("\nto participate in your project:\n");
+						outputStream.println(String.format("%30s, %30s","Project ID:", final_output[b].Project.get_project_id()));
+						outputStream.println(String.format("%30s, %30s","Project Title:", final_output[b].Project.get_title()));
+						outputStream.println(String.format("%30s, %30s","Team #:", final_output[b].Project.get_number()));
+
+						//Add code in the Project class for Primary Contact Info
+
+						//outputStream.println(String.format("%30s, %30s","Primary Contact First Name:", final_output[b].Project.));
+						//outputStream.println(String.format("%30s, %30s","Primary Contact Last Name:", final_output[b].Project.));
+						//outputStream.println(String.format("%30s, %30s","Primary Contact Email:", final_output[b].Project.));
+
+						outputStream.println("\nWe have a digital record and timestamp of their agreement: the table above includes their credentials and time of acceptance. For your reference this is the language of the agreement that the students digitally signed:\n");
+						outputStream.println("https://docs.google.com/document/d/1aj17d_u5Fir1_Q3TaTISZKyXnwN_JJkqdOux-TC_4ks/\n");
+						outputStream.println("Thank you for your participation in the Innovate to Grow program.  Please let us know if you have any questions, or special circumstances to address.\n");
+						outputStream.println("Stefano Foresti\n+1-801-971-3680\nStefano.Foresti@UCMerced.edu\n");
+						outputStream.println("University of California Merced, Director of Innovation -> engineering.ucmerced.edu");
 		        outputStream.close();
 		     }
 		     catch(FileNotFoundException e){
