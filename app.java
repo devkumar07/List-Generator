@@ -137,7 +137,7 @@ public class app {
 						primary_email=st.nextToken();
 					}
 				}
-				project_list[i] = new Project_data(title,number,project_id,organization, primary_first_name, primary_last_name, primary_email);
+				project_list[i] = new Project_data(project_id,number,organization,title, primary_first_name, primary_last_name, primary_email);
 				//reset token number
 				tokenNumber = 0;
 				i++;
@@ -177,7 +177,6 @@ public class app {
 				break;
 		}
 		project_length=i;
-		System.out.println("project_id new:"+project_list[2].get_number());
 		 Team_agreement final_output[] = new Team_agreement[project_length];
 		 int c=0;
 		 for(int a=0; a<final_output.length;a++){
@@ -186,7 +185,6 @@ public class app {
 				 c++;
 			 }
 		 }
-		 System.out.println("Success");
 		 for(int b=0;b<final_output.length;b++){
 			 if(final_output[b]!=null){
 				 String fileName = "2019_01_Spring-CSE-StudentAgreements-Team"+final_output[b].Project.get_number()+"-"+final_output[b].Project.get_organization()+"-"+final_output[b].Project.get_project_id()+".txt";
@@ -195,7 +193,7 @@ public class app {
 
 					 PrintWriter outputStream = new PrintWriter(fileName);
 
-						outputStream.println("Dear NAME,");
+						outputStream.println("Dear"+" "+final_output[b].Project.get_primary_first_name()+",");
 						outputStream.println("These students digitally signed the IP+NDA agreement 'UC Merced Innovate to Grow Program - Student Registration and Agreement' with UC Merced ID credentials:\n");
 
 						outputStream.println(String.format("%30s %20s %20s %30s", "Timestamp", "First Name", "Last Name", "Email"));
@@ -210,7 +208,7 @@ public class app {
 						outputStream.println(String.format("%30s %50s","Project ID:", final_output[b].Project.get_project_id()));
 						outputStream.println(String.format("%30s %50s","Project Title:", final_output[b].Project.get_title()));
 						outputStream.println(String.format("%30s %50s","Team #:", final_output[b].Project.get_number()));
-
+						outputStream.println(String.format("%30s %50s","Organization:", final_output[b].Project.get_organization()));
 						outputStream.println(String.format("%30s %50s","Primary Contact First Name:", final_output[b].Project.get_primary_first_name()));
 						outputStream.println(String.format("%30s %50s","Primary Contact Last Name:", final_output[b].Project.get_primary_last_name()));
 						outputStream.println(String.format("%30s %50s","Primary Contact Email:", final_output[b].Project.get_primary_email()));
@@ -227,5 +225,6 @@ public class app {
 		     }
 			 }
 		 }
+		 System.out.println("Success");
 	}
 }
