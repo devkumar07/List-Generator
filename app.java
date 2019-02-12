@@ -187,38 +187,70 @@ public class app {
 		 }
 		 for(int b=0;b<final_output.length;b++){
 			 if(final_output[b]!=null){
-				 String fileName = "2019_01_Spring-CSE-StudentAgreements-Team"+final_output[b].Project.get_number()+"-"+final_output[b].Project.get_organization()+"-"+final_output[b].Project.get_project_id()+".txt";
+				 String fileName = "2019_01_Spring-CSE-StudentAgreements-Team"+final_output[b].Project.get_number()+"-"+final_output[b].Project.get_organization()+"-"+final_output[b].Project.get_project_id()+".htm";
 				 try{
 					 i = 0;
 
 					 PrintWriter outputStream = new PrintWriter(fileName);
+					 outputStream.println("<!DOCTYPE html>\n<html>");
+					 outputStream.println("<p> Dear " +final_output[b].Project.get_primary_first_name()+", </p>");
+					 outputStream.println("<p> These <b>students digitally signed the IP+NDA agreement</b> 'UC Merced Innovate to Grow Program - Student Registration and Agreement' with UC Merced ID credentials:</p>");
+					 outputStream.println("<table style=\"text-align:left;width:100%\">\n<tr>\n<th>Timestamp</th>\n<th>First Name</th>\n<th>Last Name</th>\n<th>Email</th>\n</tr>");
 
-						outputStream.println("Dear"+" "+final_output[b].Project.get_primary_first_name()+",");
-						outputStream.println("These students digitally signed the IP+NDA agreement 'UC Merced Innovate to Grow Program - Student Registration and Agreement' with UC Merced ID credentials:\n");
+					 while(final_output[b].Student[i] != null){
+					 			outputStream.println("<tr>\n<td>"+final_output[b].Student[i].get_Time()+"</td>\n<td>"+final_output[b].Student[i].get_first_name()+"</td>\n<td>"+final_output[b].Student[i].get_last_name()+"</td>\n<td>"+final_output[b].Student[i].get_email_id()+"</td>\n</tr>");
+					 			i++;
+					 }
 
-						outputStream.println(String.format("%30s %20s %20s %30s", "Timestamp", "First Name", "Last Name", "Email"));
-						//outputStream.println(String.format("%s", "_______________________________________________________________________________________________________"));
+					 outputStream.println("</table>");
 
-						while(final_output[b].Student[i] != null){
-									outputStream.println(String.format("%30s %20s %20s %30s", final_output[b].Student[i].get_Time(),final_output[b].Student[i].get_first_name(), final_output[b].Student[i].get_last_name(), final_output[b].Student[i].get_email_id()));
-									i++;
-						}
+					 outputStream.println("<p> to <b>participate in your project</b>: </p>");
 
-						outputStream.println("\nto participate in your project:\n");
-						outputStream.println(String.format("%30s %50s","Project ID:", final_output[b].Project.get_project_id()));
-						outputStream.println(String.format("%30s %50s","Project Title:", final_output[b].Project.get_title()));
-						outputStream.println(String.format("%30s %50s","Team #:", final_output[b].Project.get_number()));
-						outputStream.println(String.format("%30s %50s","Organization:", final_output[b].Project.get_organization()));
-						outputStream.println(String.format("%30s %50s","Primary Contact First Name:", final_output[b].Project.get_primary_first_name()));
-						outputStream.println(String.format("%30s %50s","Primary Contact Last Name:", final_output[b].Project.get_primary_last_name()));
-						outputStream.println(String.format("%30s %50s","Primary Contact Email:", final_output[b].Project.get_primary_email()));
+					 outputStream.println("<table style=\"text-align:left;width:100%\">");
+					 outputStream.println("<tr>\n<td>Poject ID:</th>\n<td>"+final_output[b].Project.get_project_id()+"</th>\n</tr>");
+					 outputStream.println("<tr>\n<td>Poject Name:</th>\n<td>"+final_output[b].Project.get_title()+"</th>\n</tr>");
+					 outputStream.println("<tr>\n<td>Team #:</th>\n<td>"+final_output[b].Project.get_number()+"</th>\n</tr>");
+					 outputStream.println("<tr>\n<td>Primary Contact First Name:</th>\n<td>"+final_output[b].Project.get_primary_first_name()+"</th>\n</tr>");
+					 outputStream.println("<tr>\n<td>Primary Contact Last Name:</th>\n<td>"+final_output[b].Project.get_primary_last_name()+"</th>\n</tr>");
+					 outputStream.println("<tr>\n<td>Primary Email:</th>\n<td>"+final_output[b].Project.get_primary_email()+"</th>\n</tr>");
+					 outputStream.println("</table>");
 
-						outputStream.println("\nWe have a digital record and timestamp of their agreement: the table above includes their credentials and time of acceptance. For your reference this is the language of the agreement that the students digitally signed:\n");
-						outputStream.println("https://docs.google.com/document/d/1aj17d_u5Fir1_Q3TaTISZKyXnwN_JJkqdOux-TC_4ks/\n");
-						outputStream.println("Thank you for your participation in the Innovate to Grow program.  Please let us know if you have any questions, or special circumstances to address.\n");
-						outputStream.println("Stefano Foresti\n+1-801-971-3680\nStefano.Foresti@UCMerced.edu\n");
-						outputStream.println("University of California Merced, Director of Innovation -> engineering.ucmerced.edu");
-		        outputStream.close();
+					 outputStream.println("<p>We have a digital record and timestamp of their agreement: the table above includes their credentials and time of acceptance. <b>For your reference this is the</b><a href=\"https://docs.google.com/document/d/1aj17d_u5Fir1_Q3TaTISZKyXnwN_JJkqdOux-TC_4ks/edit\"> language of the agreement that the students digitally signed.</a></p>");
+
+					 outputStream.println("<p>Thank you for your participation in the Innovate to Grow program.  Please let us know if you have any questions, or special circumstances to address.</p>");
+
+					 outputStream.println("<p>Stefano Foresti<br/>+1-801-971-3680<br/>Stefano.Foresti@UCMerced.edu<br/>");
+					 outputStream.println("<p>University of California Merced, Director of Innovation -> engineering.ucmerced.edu<p>");
+
+					 outputStream.close();
+						//for .txt output
+
+						// outputStream.println("Dear"+" "+final_output[b].Project.get_primary_first_name()+",");
+						// outputStream.println("These students digitally signed the IP+NDA agreement 'UC Merced Innovate to Grow Program - Student Registration and Agreement' with UC Merced ID credentials:\n");
+						//
+						// outputStream.println(String.format("%30s %20s %20s %30s", "Timestamp", "First Name", "Last Name", "Email"));
+						// //outputStream.println(String.format("%s", "_______________________________________________________________________________________________________"));
+						//
+						// while(final_output[b].Student[i] != null){
+						// 			outputStream.println(String.format("%30s %20s %20s %30s", final_output[b].Student[i].get_Time(),final_output[b].Student[i].get_first_name(), final_output[b].Student[i].get_last_name(), final_output[b].Student[i].get_email_id()));
+						// 			i++;
+						// }
+						//
+						// outputStream.println("\nto participate in your project:\n");
+						// outputStream.println(String.format("%30s %50s","Project ID:", final_output[b].Project.get_project_id()));
+						// outputStream.println(String.format("%30s %50s","Project Title:", final_output[b].Project.get_title()));
+						// outputStream.println(String.format("%30s %50s","Team #:", final_output[b].Project.get_number()));
+						// outputStream.println(String.format("%30s %50s","Organization:", final_output[b].Project.get_organization()));
+						// outputStream.println(String.format("%30s %50s","Primary Contact First Name:", final_output[b].Project.get_primary_first_name()));
+						// outputStream.println(String.format("%30s %50s","Primary Contact Last Name:", final_output[b].Project.get_primary_last_name()));
+						// outputStream.println(String.format("%30s %50s","Primary Contact Email:", final_output[b].Project.get_primary_email()));
+						//
+						// outputStream.println("\nWe have a digital record and timestamp of their agreement: the table above includes their credentials and time of acceptance. For your reference this is the language of the agreement that the students digitally signed:\n");
+						// outputStream.println("https://docs.google.com/document/d/1aj17d_u5Fir1_Q3TaTISZKyXnwN_JJkqdOux-TC_4ks/\n");
+						// outputStream.println("Thank you for your participation in the Innovate to Grow program.  Please let us know if you have any questions, or special circumstances to address.\n");
+						// outputStream.println("Stefano Foresti\n+1-801-971-3680\nStefano.Foresti@UCMerced.edu\n");
+						// outputStream.println("University of California Merced, Director of Innovation -> engineering.ucmerced.edu");
+		        // outputStream.close();
 		     }
 		     catch(FileNotFoundException e){
 		       e.printStackTrace();
