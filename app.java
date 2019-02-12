@@ -44,6 +44,9 @@ public class app {
 		String number="";
 		String project_id="";
 		String organization="";
+		String primary_first_name="";
+		String primary_last_name="";
+		String primary_email="";
 		int project_length=0;
 		int student_length=0;
 		int i=0;
@@ -124,8 +127,17 @@ public class app {
 					if(tokenNumber==4){
 						title=st.nextToken();
 					}
+					if(tokenNumber==5){
+						primary_first_name=st.nextToken();
+					}
+					if(tokenNumber==6){
+						primary_last_name=st.nextToken();
+					}
+					if(tokenNumber==7){
+						primary_email=st.nextToken();
+					}
 				}
-				project_list[i] = new Project_data(title,number,project_id,organization);
+				project_list[i] = new Project_data(title,number,project_id,organization, primary_first_name, primary_last_name, primary_email);
 				//reset token number
 				tokenNumber = 0;
 				i++;
@@ -178,7 +190,7 @@ public class app {
 		 for(int b=0;b<final_output.length;b++){
 			 if(final_output[b]!=null){
 				 String fileName = "2019_01_Spring-CSE-StudentAgreements-Team"+final_output[b].Project.get_number()+"-"+final_output[b].Project.get_organization()+"-"+final_output[b].Project.get_project_id()+".txt";
-		     try{
+				 try{
 					 i = 0;
 
 					 PrintWriter outputStream = new PrintWriter(fileName);
@@ -195,15 +207,13 @@ public class app {
 						}
 
 						outputStream.println("\nto participate in your project:\n");
-						outputStream.println(String.format("%30s, %30s","Project ID:", final_output[b].Project.get_project_id()));
-						outputStream.println(String.format("%30s, %30s","Project Title:", final_output[b].Project.get_title()));
-						outputStream.println(String.format("%30s, %30s","Team #:", final_output[b].Project.get_number()));
+						outputStream.println(String.format("%30s %50s","Project ID:", final_output[b].Project.get_project_id()));
+						outputStream.println(String.format("%30s %50s","Project Title:", final_output[b].Project.get_title()));
+						outputStream.println(String.format("%30s %50s","Team #:", final_output[b].Project.get_number()));
 
-						//Add code in the Project class for Primary Contact Info
-
-						//outputStream.println(String.format("%30s, %30s","Primary Contact First Name:", final_output[b].Project.));
-						//outputStream.println(String.format("%30s, %30s","Primary Contact Last Name:", final_output[b].Project.));
-						//outputStream.println(String.format("%30s, %30s","Primary Contact Email:", final_output[b].Project.));
+						outputStream.println(String.format("%30s %50s","Primary Contact First Name:", final_output[b].Project.get_primary_first_name()));
+						outputStream.println(String.format("%30s %50s","Primary Contact Last Name:", final_output[b].Project.get_primary_last_name()));
+						outputStream.println(String.format("%30s %50s","Primary Contact Email:", final_output[b].Project.get_primary_email()));
 
 						outputStream.println("\nWe have a digital record and timestamp of their agreement: the table above includes their credentials and time of acceptance. For your reference this is the language of the agreement that the students digitally signed:\n");
 						outputStream.println("https://docs.google.com/document/d/1aj17d_u5Fir1_Q3TaTISZKyXnwN_JJkqdOux-TC_4ks/\n");
