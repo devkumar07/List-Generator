@@ -22,6 +22,14 @@ Note: You should have two CSV files in the “Data” folder inside “List-Gene
 
 -  Type “java app”. You will be asked enter the student and project CSV roster. (You need to type the name of the csv file with the “.csv” extension)
 
+- Enter the year (Ex. 2019)
+
+- Enter the month (Ex. 01)
+
+- Enter the semester (Ex. Spring)
+
+- Enter the course as abbreviation (Ex. Capstone = CAP)
+
 - You will then be asked what you would like to do. Currently, the application can only generate team agreements, so enter “1”. 
 
 - The output will be stored in the “List-Generator” folder
