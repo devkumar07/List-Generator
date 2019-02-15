@@ -59,6 +59,14 @@ public class app {
 		data_CSV="data/"+input.nextLine();
 		System.out.println("Please input your Project Roster");
 		project_CSV="data/"+input.nextLine();
+		System.out.println("Please enter the year");
+		String year=input.nextLine();
+		System.out.println("Please enter the month");
+		String month=input.nextLine();
+		System.out.println("Please enter the semester");
+		String semester=input.nextLine();
+		System.out.println("Please enter the class abbreviation");
+		String abb=input.nextLine();
 
 		//fetching data from CSV files
 		try {
@@ -187,13 +195,13 @@ public class app {
 		 }
 		 for(int b=0;b<final_output.length;b++){
 			 if(final_output[b]!=null){
-				 String fileName = "2019_01_Spring-CSE-StudentAgreements-Team"+final_output[b].Project.get_number()+"-"+final_output[b].Project.get_organization()+"-"+final_output[b].Project.get_project_id()+".htm";
+				 String fileName = year+"-"+month+"-"+semester+"-"+abb+"-StudentAgreements-Team"+final_output[b].Project.get_number()+"-"+final_output[b].Project.get_organization()+"-"+final_output[b].Project.get_project_id()+".htm";
 				 try{
 					 i = 0;
 
 					 PrintWriter outputStream = new PrintWriter(fileName);
 					 outputStream.println("<!DOCTYPE html>\n<html>");
-					 outputStream.println("<p> Dear " +final_output[b].Project.get_primary_first_name()+": </p>");
+					 outputStream.println("<p> Dear " +final_output[b].Project.get_primary_first_name()+",</p>");
 					 outputStream.println("<p> These <b>students digitally signed the IP+NDA agreement</b> 'UC Merced Innovate to Grow Program - Student Registration and Agreement' with UC Merced ID credentials:</p>");
 					 outputStream.println("<table style=\"text-align:left;width:100%\">\n<tr>\n<th>Timestamp</th>\n<th>First Name</th>\n<th>Last Name</th>\n<th>Email</th>\n</tr>");
 
@@ -216,7 +224,7 @@ public class app {
 					 outputStream.println("<tr>\n<td>Primary Contact Email:</th>\n<td>"+final_output[b].Project.get_primary_email()+"</th>\n</tr>");
 					 outputStream.println("</table>");
 
-					 outputStream.println("<p><b>We have a digital record and timestamp of their agreement:</b> the table above includes their credentials and time of acceptance. <b>For your reference </b>this is the<a href=\"https://docs.google.com/document/d/1aj17d_u5Fir1_Q3TaTISZKyXnwN_JJkqdOux-TC_4ks/edit\"> language of the agreement that the students digitally signed.</a></p>");
+					 outputStream.println("<p><b>We have a digital record and timestamp of their agreement:</b> the table above includes their credentials and time of acceptance. <b>For your reference </b>this is the<a href=\"https://docs.google.com/document/d/1aj17d_u5Fir1_Q3TaTISZKyXnwN_JJkqdOux-TC_4ks/edit\"> language of the agreement </a>that the students digitally signed.</p>");
 
 					 outputStream.println("<p>Thank you for your participation in the Innovate to Grow program.  Please let us know if you have any questions, or special circumstances to address.</p>");
 
