@@ -193,7 +193,7 @@ public class app {
 
 					 PrintWriter outputStream = new PrintWriter(fileName);
 					 outputStream.println("<!DOCTYPE html>\n<html>");
-					 outputStream.println("<p> Dear " +final_output[b].Project.get_primary_first_name()+", </p>");
+					 outputStream.println("<p> Dear " +final_output[b].Project.get_primary_first_name()+": </p>");
 					 outputStream.println("<p> These <b>students digitally signed the IP+NDA agreement</b> 'UC Merced Innovate to Grow Program - Student Registration and Agreement' with UC Merced ID credentials:</p>");
 					 outputStream.println("<table style=\"text-align:left;width:100%\">\n<tr>\n<th>Timestamp</th>\n<th>First Name</th>\n<th>Last Name</th>\n<th>Email</th>\n</tr>");
 
@@ -207,15 +207,16 @@ public class app {
 					 outputStream.println("<p> to <b>participate in your project</b>: </p>");
 
 					 outputStream.println("<table style=\"text-align:left;width:100%\">");
-					 outputStream.println("<tr>\n<td>Poject ID:</th>\n<td>"+final_output[b].Project.get_project_id()+"</th>\n</tr>");
-					 outputStream.println("<tr>\n<td>Poject Name:</th>\n<td>"+final_output[b].Project.get_title()+"</th>\n</tr>");
+					 outputStream.println("<tr>\n<td>Project ID:</th>\n<td>"+final_output[b].Project.get_project_id()+"</th>\n</tr>");
+					 outputStream.println("<tr>\n<td>Project Title:</th>\n<td>"+final_output[b].Project.get_title()+"</th>\n</tr>");
 					 outputStream.println("<tr>\n<td>Team #:</th>\n<td>"+final_output[b].Project.get_number()+"</th>\n</tr>");
+					 outputStream.println("<tr>\n<td>Organization:</th>\n<td>"+final_output[b].Project.get_organization()+"</th>\n</tr>");
 					 outputStream.println("<tr>\n<td>Primary Contact First Name:</th>\n<td>"+final_output[b].Project.get_primary_first_name()+"</th>\n</tr>");
 					 outputStream.println("<tr>\n<td>Primary Contact Last Name:</th>\n<td>"+final_output[b].Project.get_primary_last_name()+"</th>\n</tr>");
-					 outputStream.println("<tr>\n<td>Primary Email:</th>\n<td>"+final_output[b].Project.get_primary_email()+"</th>\n</tr>");
+					 outputStream.println("<tr>\n<td>Primary Contact Email:</th>\n<td>"+final_output[b].Project.get_primary_email()+"</th>\n</tr>");
 					 outputStream.println("</table>");
 
-					 outputStream.println("<p>We have a digital record and timestamp of their agreement: the table above includes their credentials and time of acceptance. <b>For your reference this is the</b><a href=\"https://docs.google.com/document/d/1aj17d_u5Fir1_Q3TaTISZKyXnwN_JJkqdOux-TC_4ks/edit\"> language of the agreement that the students digitally signed.</a></p>");
+					 outputStream.println("<p><b>We have a digital record and timestamp of their agreement:</b> the table above includes their credentials and time of acceptance. <b>For your reference </b>this is the<a href=\"https://docs.google.com/document/d/1aj17d_u5Fir1_Q3TaTISZKyXnwN_JJkqdOux-TC_4ks/edit\"> language of the agreement that the students digitally signed.</a></p>");
 
 					 outputStream.println("<p>Thank you for your participation in the Innovate to Grow program.  Please let us know if you have any questions, or special circumstances to address.</p>");
 
