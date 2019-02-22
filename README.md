@@ -33,7 +33,7 @@ Note: You should have two CSV files in the “Data” folder inside “List-Gene
 
 - The output will be stored in the “List-Generator” folder
 
-## Troubleshooting
+## Troubleshooting (Unix)
 If you are having issues follow these steps.
 
 ### This program requires the latest version of Java. Follow these steps to reinstall
