@@ -39,16 +39,16 @@ If you are having issues follow these steps.
 ##This program requires the latest version of Java. Follow these steps to reinstall
 
 - Uninstall previous versions of Java 
-   - `sudo rm -fr /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin 
-   - `sudo rm -fr /Library/PreferencePanes/JavaControlPanel.prefPane 
-   - `sudo rm -fr ~/Library/Application\ Support/Oracle/Java
+   - `sudo rm -fr /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin `
+   - `sudo rm -fr /Library/PreferencePanes/JavaControlPanel.prefPane `
+   - `sudo rm -fr ~/Library/Application\ Support/Oracle/Java`
 
 - To check if uninstallation happened successfully
-  - `java -version
+  - `java -version`
 
 - Download and install the JDK: https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-   - Check if the JRE and JDK are the same versions using `java -version 
+   - Check if the JRE and JDK are the same versions using `java -version `
  
 - If problems persist try to remove any bad class files (./Team_Agreement.class), we might have to delete. 
-  - `rm -rf *.class
+  - `rm -rf *.class`
 
