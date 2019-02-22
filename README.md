@@ -2,7 +2,7 @@
 
 Welcome to List-Generator!
 
-#Setup:
+## Setup:
 In order to run the application, you need to have JDK installed in your system.
 
 Tools needed for running the app:
@@ -33,10 +33,10 @@ Note: You should have two CSV files in the “Data” folder inside “List-Gene
 
 - The output will be stored in the “List-Generator” folder
 
-#Troubleshooting
+## Troubleshooting
 If you are having issues follow these steps.
 
-##This program requires the latest version of Java. Follow these steps to reinstall
+### This program requires the latest version of Java. Follow these steps to reinstall
 
 - Uninstall previous versions of Java 
    - `sudo rm -fr /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin `
