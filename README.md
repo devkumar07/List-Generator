@@ -13,13 +13,11 @@ Running the application:
 
 Note: You should have two CSV files in the “Data” folder inside “List-Generator” before running the application. Refer to the sample format for student roster and project roster. 
 
-- Once your computer is set up with JDK, open terminal (if you are using Mac) or command prompt (if using windows)
+- Open the "List-Generator.jar" file. Once you open, a dialog box will appear with a welcome message 
 
--  Navigate to the directory where “List-Generator” is located on your local computer
+- Enter the student roster CSV file (Ex. student_roster.csv)
 
--  Once you are inside the “List-Generator” directory, type: `javac app.java`. If you do not get any message after typing the 
-
--  Type `java app`. You will be asked enter the student and project CSV roster. (You need to type the name of the csv file with the “.csv” extension)
+- Enter the project roster CSV file (Ex. project_roster.csv)
 
 - Enter the year (Ex. 2019)
 
@@ -31,7 +29,7 @@ Note: You should have two CSV files in the “Data” folder inside “List-Gene
 
 - You will then be asked what you would like to do. Currently, the application can only generate team agreements, so enter “1”. 
 
-- The output will be stored in the “List-Generator” folder
+- You will recieve a "Success!" message indicating that the list generation is completed. The output will be stored in the “List-Generator” folder
 
 ## Troubleshooting (Unix)
 If you are having issues follow these steps.
